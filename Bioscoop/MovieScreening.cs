@@ -24,5 +24,10 @@
         {
             return "";
         }
+
+        public DateTime GetDateAndTime()
+        {
+            return _dateAndTime;
+        }
     }
 }

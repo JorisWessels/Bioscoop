@@ -6,6 +6,7 @@
         private int _seatNr;
         private bool _isPremium;
         private MovieScreening _movieScreening;
+
         public MovieTicket(MovieScreening movieScreening, bool isPremiumReservation, int seatRow, int seatNr)
         {
             _movieScreening = movieScreening;
@@ -21,7 +22,12 @@
 
         public double getPrice() 
         {
-            return 0;
+            return _movieScreening.getPricePerSeat();
+        }
+
+        public DateTime getDateAndTime()
+        {
+            return _movieScreening.GetDateAndTime();
         }
 
         public string toString()
