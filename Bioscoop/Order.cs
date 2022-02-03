@@ -93,7 +93,7 @@ namespace Bioscoop
                 case TicketExportFormat.JSON:
                     Console.WriteLine("In JSON case");
                     // Console Writeline for file location
-                    Console.WriteLine("Hier gaat de json komen: {0}", Directory.GetCurrentDirectory());
+                    //Console.WriteLine("Hier gaat de json komen: {0}", Directory.GetCurrentDirectory());
 
                     string jsonString = JsonSerializer.Serialize(new
                     {
