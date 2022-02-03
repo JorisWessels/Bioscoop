@@ -25,9 +25,14 @@
             return _movieScreening.getPricePerSeat();
         }
 
+        public Movie getMovie()
+        {
+            return _movieScreening.getMovie();
+        }
+
         public DateTime getDateAndTime()
         {
-            return _movieScreening.GetDateAndTime();
+            return _movieScreening.getDateAndTime();
         }
 
         public string toString()

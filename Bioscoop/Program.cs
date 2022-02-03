@@ -54,3 +54,5 @@ orderTwo.addSeatReservation(ticket2Seven);
 
 Console.WriteLine("Total Price: ");
 Console.WriteLine(orderTwo.calculatePrice());
+
+order.export(TicketExportFormat.PLAINTEXT);

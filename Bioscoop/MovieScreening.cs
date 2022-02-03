@@ -25,9 +25,11 @@
             return "";
         }
 
-        public DateTime GetDateAndTime()
+        public DateTime getDateAndTime()
         {
             return _dateAndTime;
         }
+
+        public Movie getMovie() { return _movie; }
     }
 }

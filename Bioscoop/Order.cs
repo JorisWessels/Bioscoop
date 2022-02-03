@@ -4,7 +4,6 @@
     {
         private int _orderNr;
         private bool _isStudentOrder;
-        private TicketExportFormat _ticketExportFormat;
         private IList<MovieTicket> _movieTicketList;
 
         public Order(int orderNr, bool isStudentOrder)
@@ -86,7 +85,48 @@
 
         public void export(TicketExportFormat exportFormat)
         {
+            Console.WriteLine("In de exportAsync");
+            switch (exportFormat)
+            {
+                case TicketExportFormat.JSON:
+                    Console.WriteLine("In JSON case");
 
+                    
+
+                    break;
+                case TicketExportFormat.PLAINTEXT:
+
+                    Console.WriteLine("In PLAINTEXT case");
+
+                    List<String> lines = new List<String>();
+
+                    lines.Add("OrderNr: " + _orderNr);
+                    lines.Add("Movie: " + _movieTicketList[0].getMovie().toString());
+                    lines.Add("Date: " + _movieTicketList[0].getDateAndTime());
+                    lines.Add("Student Order: " + _isStudentOrder);
+                    lines.Add("--------");
+                    lines.Add("");
+
+                    foreach (MovieTicket movieTicket in _movieTicketList)
+                    {
+                        lines.Add("Premium: " + movieTicket.IsPremiumTicket() + " - Normal Price: " + movieTicket.getPrice());
+                        lines.Add("");
+                    }
+
+                    lines.Add("");
+                    lines.Add("--------");
+                    lines.Add("Total Price: " + calculatePrice());
+
+                    // Console Writeline for file location
+                    /*Console.WriteLine("Hier gaat text komen: {0}", Directory.GetCurrentDirectory());*/
+                   
+                    File.WriteAllLines("ticket.txt", lines);
+
+                    break;
+                default:
+                    Console.WriteLine("In DEFAULT case");
+                    break;
+            }
         }
     }
 }
