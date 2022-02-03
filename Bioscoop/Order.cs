@@ -1,4 +1,6 @@
-﻿namespace Bioscoop
+﻿using System.Text.Json;
+
+namespace Bioscoop
 {
     public class Order
     {
@@ -90,8 +92,19 @@
             {
                 case TicketExportFormat.JSON:
                     Console.WriteLine("In JSON case");
+                    // Console Writeline for file location
+                    Console.WriteLine("Hier gaat de json komen: {0}", Directory.GetCurrentDirectory());
 
-                    
+                    string jsonString = JsonSerializer.Serialize(new
+                    {
+                        OrderNr = _orderNr,
+                        TotalPrice = calculatePrice(),
+                        Tickets = _movieTicketList,
+                        Movie = _movieTicketList[0].getMovie().toString(),
+                        DateAndTime = _movieTicketList[0].getDateAndTime(),
+                    });
+
+                    File.WriteAllText("text.json", jsonString);
 
                     break;
                 case TicketExportFormat.PLAINTEXT:
@@ -118,7 +131,7 @@
                     lines.Add("Total Price: " + calculatePrice());
 
                     // Console Writeline for file location
-                    /*Console.WriteLine("Hier gaat text komen: {0}", Directory.GetCurrentDirectory());*/
+                    /*Console.WriteLine("Hier gaat de text komen: {0}", Directory.GetCurrentDirectory());*/
                    
                     File.WriteAllLines("ticket.txt", lines);
 
