@@ -20,7 +20,7 @@
 
         public string toString()
         {
-            return _movie.toString() + " - ", + "Price per seat: " + _pricePerSeat + " -  Date: " + _dateAndTime;
+            return _movie.toString() + " - " + "Price per seat: " + _pricePerSeat + " -  Date: " + _dateAndTime;
         }
 
         public DateTime getDateAndTime()
