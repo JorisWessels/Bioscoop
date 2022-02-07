@@ -21,11 +21,11 @@ jobs:
         uses: highbyte/sonarscan-dotnet@v2.1.2
         with:
           # The key of the SonarQube project
-          sonarProjectKey: your_projectkey
+          sonarProjectKey: JorisWessels_Bioscoop
           # The name of the SonarQube project
-          sonarProjectName:  your_projectname
+          sonarProjectName:  Bioscoop
           # The name of the SonarQube organization in SonarCloud. For hosted SonarQube, skip this setting.
-          sonarOrganization: your_organization
+          sonarOrganization: joriswessels
           # Optional command arguments to dotnet test
           dotnetTestArguments: --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
           # Optional extra command arguments the the SonarScanner 'begin' command
