@@ -2,8 +2,8 @@
 {
     public class Movie
     {
-        private string _title;
-        private IList<MovieScreening> _movieScreenings;
+        private readonly string _title;
+        private readonly IList<MovieScreening> _movieScreenings;
 
         public Movie(string title)
         {

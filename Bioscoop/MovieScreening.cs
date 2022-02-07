@@ -2,17 +2,15 @@
 {
     public class MovieScreening
     {
-        private double _pricePerSeat;
-        private DateTime _dateAndTime;
-        private Movie _movie;
-        private IList<MovieTicket> _movieTickets;
+        private readonly double _pricePerSeat;
+        private readonly DateTime _dateAndTime;
+        private readonly Movie _movie;
 
         public MovieScreening(Movie movie, DateTime dataAndTime, double pricePerSeat)
         {
             _dateAndTime = dataAndTime;
             _pricePerSeat = pricePerSeat;
             _movie = movie;
-            _movieTickets = new List<MovieTicket>();
         }
 
         public double getPricePerSeat()
@@ -22,7 +20,7 @@
 
         public string toString()
         {
-            return "";
+            return _movie.toString() + " - " + "Price per seat: " + _pricePerSeat + " -  Date: " + _dateAndTime;
         }
 
         public DateTime getDateAndTime()

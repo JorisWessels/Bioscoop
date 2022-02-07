@@ -4,9 +4,9 @@ namespace Bioscoop
 {
     public class Order
     {
-        private int _orderNr;
-        private bool _isStudentOrder;
-        private IList<MovieTicket> _movieTicketList;
+        private readonly int _orderNr;
+        private readonly bool _isStudentOrder;
+        private readonly IList<MovieTicket> _movieTicketList;
 
         public Order(int orderNr, bool isStudentOrder)
         {
@@ -92,8 +92,6 @@ namespace Bioscoop
             {
                 case TicketExportFormat.JSON:
                     Console.WriteLine("In JSON case");
-                    // Console Writeline for file location
-                    //Console.WriteLine("Hier gaat de json komen: {0}", Directory.GetCurrentDirectory());
 
                     string jsonString = JsonSerializer.Serialize(new
                     {
@@ -130,8 +128,6 @@ namespace Bioscoop
                     lines.Add("--------");
                     lines.Add("Total Price: " + calculatePrice());
 
-                    // Console Writeline for file location
-                    /*Console.WriteLine("Hier gaat de text komen: {0}", Directory.GetCurrentDirectory());*/
                    
                     File.WriteAllLines("ticket.txt", lines);
 
