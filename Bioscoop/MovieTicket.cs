@@ -20,8 +20,16 @@
            return _isPremium;
         }
 
-        public double getPrice() 
+        public double getPrice(bool isStudentOrder) 
         {
+            if(_isPremium == true) {
+                if(isStudentOrder == true) {
+                    return _movieScreening.getPricePerSeat() + 2;
+                } else {
+                    return _movieScreening.getPricePerSeat() + 3;
+                }
+            }
+
             return _movieScreening.getPricePerSeat();
         }
 
