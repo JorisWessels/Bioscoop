@@ -22,8 +22,8 @@
 
         public double getPrice(bool isStudentOrder) 
         {
-            if(_isPremium == true) {
-                if(isStudentOrder == true) {
+            if(_isPremium) {
+                if(isStudentOrder) {
                     return _movieScreening.getPricePerSeat() + 2;
                 } else {
                     return _movieScreening.getPricePerSeat() + 3;
