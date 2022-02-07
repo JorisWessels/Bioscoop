@@ -2,10 +2,10 @@
 {
     public class MovieTicket
     {
-        private int _rowNr;
-        private int _seatNr;
-        private bool _isPremium;
-        private MovieScreening _movieScreening;
+        private readonly int _rowNr;
+        private readonly int _seatNr;
+        private readonly bool _isPremium;
+        private readonly MovieScreening _movieScreening;
 
         public MovieTicket(MovieScreening movieScreening, bool isPremiumReservation, int seatRow, int seatNr)
         {
@@ -37,7 +37,7 @@
 
         public string toString()
         {
-            return "";
+            return "Row: " + _rowNr + " SeatNr: " + _seatNr + " - Is premium: " + _isPremium;
         }
     }
 }
