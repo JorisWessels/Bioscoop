@@ -1,3 +1,5 @@
+using Bioscoop.ExportBehavior;
+using Bioscoop.PriceBehavior;
 using System;
 using Xunit;
 
@@ -9,14 +11,16 @@ namespace Bioscoop.Tests
         public void Test_Case_1()
         {
             // Arrange
-            Order order = new Order(1, true);
+            IOrderExportBehavior orderExportBehavior = new Json();
+            ICalculatePriceBehavior calculatePriceBehavior = new StudentOrder();
+            Order order = new Order(1, calculatePriceBehavior, orderExportBehavior);
             Movie movie = new Movie("Dune");
             MovieScreening movieScreening = new MovieScreening(movie, new DateTime(2022, 2, 7), 10.0);
             MovieTicket ticket = new MovieTicket(movieScreening, true, 1, 5);
             order.addSeatReservation(ticket);
 
             // Act
-            var testResult = order.calculatePrice();
+            var testResult = order.performCalculatePrice();
 
             // Assert
             Assert.Equal(12, testResult);
@@ -26,14 +30,16 @@ namespace Bioscoop.Tests
         public void Test_Case_2()
         {
             // Arrange
-            Order order = new Order(1, false);
+            IOrderExportBehavior orderExportBehavior = new Json();
+            ICalculatePriceBehavior calculatePriceBehavior = new NormalOrder();
+            Order order = new Order(1, calculatePriceBehavior, orderExportBehavior);
             Movie movie = new Movie("Dune");
             MovieScreening movieScreening = new MovieScreening(movie, new DateTime(2022, 2, 7), 10.0);
             MovieTicket ticket = new MovieTicket(movieScreening, true, 1, 5);
             order.addSeatReservation(ticket);
 
             // Act
-            var testResult = order.calculatePrice();
+            var testResult = order.performCalculatePrice();
 
             // Assert
             Assert.Equal(13, testResult);
@@ -43,7 +49,9 @@ namespace Bioscoop.Tests
         public void Test_Case_3()
         {
             // Arrange
-            Order order = new Order(1, false);
+            IOrderExportBehavior orderExportBehavior = new Json();
+            ICalculatePriceBehavior calculatePriceBehavior = new NormalOrder();
+            Order order = new Order(1, calculatePriceBehavior, orderExportBehavior);
             Movie movie = new Movie("Dune");
             MovieScreening movieScreening = new MovieScreening(movie, new DateTime(2022, 2, 7), 10.0);
             MovieTicket ticket = new MovieTicket(movieScreening, false, 1, 5);
@@ -52,7 +60,7 @@ namespace Bioscoop.Tests
             order.addSeatReservation(ticketTwo);
 
             // Act
-            var testResult = order.calculatePrice();
+            var testResult = order.performCalculatePrice();
 
             // Assert
             Assert.Equal(10, testResult);
@@ -62,7 +70,9 @@ namespace Bioscoop.Tests
         public void Test_Case_4()
         {
             // Arrange
-            Order order = new Order(1, false);
+            IOrderExportBehavior orderExportBehavior = new Json();
+            ICalculatePriceBehavior calculatePriceBehavior = new NormalOrder();
+            Order order = new Order(1, calculatePriceBehavior, orderExportBehavior);
             Movie movie = new Movie("Dune");
             MovieScreening movieScreening = new MovieScreening(movie, new DateTime(2022, 2, 5), 10.0);
             MovieTicket ticket = new MovieTicket(movieScreening, false, 1, 5);
@@ -79,7 +89,7 @@ namespace Bioscoop.Tests
             order.addSeatReservation(ticketSix);
 
             // Act
-            var testResult = order.calculatePrice();
+            var testResult = order.performCalculatePrice();
 
             // Assert
             Assert.Equal(54, testResult);
