@@ -2,7 +2,7 @@
 {
     public class OrderProvisionalState : IState
     {
-        private Order _order;
+        private readonly Order _order;
         public OrderProvisionalState(Order order)
         {
             _order = order;

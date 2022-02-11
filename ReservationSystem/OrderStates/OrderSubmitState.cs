@@ -2,7 +2,7 @@
 {
     public class OrderSubmitState : IState
     {
-        private Order _order;
+        private readonly Order _order;
 
         public OrderSubmitState(Order order)
         {

@@ -2,7 +2,7 @@
 {
     public class OrderCreateState : IState
     {
-        private Order _order;
+        private readonly Order _order;
 
         public OrderCreateState(Order order)
         {
