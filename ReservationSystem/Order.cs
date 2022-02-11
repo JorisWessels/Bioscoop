@@ -16,6 +16,11 @@ namespace ReservationSystem
             _state = new OrderStartState(this);
         }
 
+        public void ResetOrder() {
+            _ticketAmount = 0;
+            _parking = false;
+        }
+
         public IState GetState()
         {
             return _state;
