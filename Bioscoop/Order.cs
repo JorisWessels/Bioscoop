@@ -2,7 +2,7 @@
 using Bioscoop.ExportBehavior;
 using Bioscoop.PriceBehavior;
 
-namespace Bioscoop
+namespace BioscoopPathe
 {
     public class Order
     {
