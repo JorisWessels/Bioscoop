@@ -1,14 +1,17 @@
 ﻿using ReservationSystem.OrderStates;
+using ReservationSystem.Notifier;
 
 namespace ReservationSystem
 {
-    public class Order
+    public class Order : INotifier
     {
         private DateTime _orderCreateAt;
         private readonly MovieScreening _movieScreening;
         private int _ticketAmount;
         private bool _parking;
         private IState _state;
+
+        private IList<ISubscriber> _subscribers = new List<ISubscriber>();
 
         public Order(DateTime orderCreateAt, MovieScreening movieScreening) {
             _orderCreateAt = orderCreateAt;
@@ -92,6 +95,24 @@ namespace ReservationSystem
         public override string ToString()
         {
             return string.Format("Ticket amount: {0}, Parking: {1}, Order created at {2}", GetTicketAmount(), GetParking(), GetOrderCreateAt().Date);
+        }
+
+        public void Subscribe(ISubscriber subscriber)
+        {
+            _subscribers.Add(subscriber);
+        }
+
+        public void Unsubscribe(ISubscriber subscriber)
+        {
+            _subscribers.Remove(subscriber);
+        }
+
+        public void Notify()
+        {
+            foreach (var subscriber in _subscribers)
+            {
+                subscriber.Update();
+            }
         }
     }
 }
